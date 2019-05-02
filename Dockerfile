@@ -18,18 +18,19 @@ php-imagick \
 php-redis \
 php-memcache \
 php-pear \
-php-xml \
 php7.2-xml \
-php7.2-dev
+php7.2-dev \
+php7.2-bcmath \
+php7.2-zip \
+php7.2-dom
+
 
 RUN wget https://github.com/swoole/swoole-src/archive/v4.3.3.tar.gz
 RUN tar zxfv v4.3.3.tar.gz && rm -rf v4.3.3.tar.gz
 WORKDIR /root/swoole-src-4.3.3
 RUN phpize7.2 && ./configure \
---enable-coroutine \
 --enable-openssl  \
 --enable-http2  \
---enable-async-redis \
 --enable-sockets \
 --enable-mysqlnd && \
 make clean && make install
