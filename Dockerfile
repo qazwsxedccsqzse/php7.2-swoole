@@ -15,7 +15,6 @@ php7.2-cgi \
 php7.2-mbstring \
 php7.2-gd \
 php-imagick \
-php-redis \
 php-memcache \
 php-pear \
 php7.2-xml \
