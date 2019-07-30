@@ -1,8 +1,8 @@
 FROM phusion/baseimage:latest
-RUN apt-get update && apt-get install -y git wget tar unzip make vim libpcre3 libpcre3-dev openssl libssl-dev openssl libssl-dev
+RUN apt-get update && apt-get install -y wget tar make libpcre3 libpcre3-dev openssl libssl-dev openssl libssl-dev
 WORKDIR /root
-RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
-RUN apt-get update && \
+RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php && \
+apt-get update && \
 apt-get install -y php7.2-cli \
 php7.2-common \
 php7.2 \
@@ -21,17 +21,15 @@ php7.2-xml \
 php7.2-dev \
 php7.2-bcmath \
 php7.2-zip \
-php7.2-dom
-
-
-RUN wget https://github.com/swoole/swoole-src/archive/v4.3.3.tar.gz
-RUN tar zxfv v4.3.3.tar.gz && rm -rf v4.3.3.tar.gz
-WORKDIR /root/swoole-src-4.3.3
-RUN phpize7.2 && ./configure \
+php7.2-dom && \
+wget https://github.com/swoole/swoole-src/archive/v4.4.2.tar.gz && \
+tar zxfv v4.4.2.tar.gz && rm -rf v4.4.2.tar.gz && \
+cd /root/swoole-src-4.4.2 && \
+phpize7.2 && ./configure \
 --enable-openssl  \
 --enable-http2  \
 --enable-sockets \
 --enable-mysqlnd && \
-make clean && make install
-
-RUN echo "extension=swoole.so" >> /etc/php/7.2/cli/php.ini
+make clean && make install && \
+echo "extension=swoole.so" >> /etc/php/7.2/cli/php.ini && \
+cd /root && rm -rf swoole-src-4.4.2
