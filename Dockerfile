@@ -1,5 +1,5 @@
 FROM phusion/baseimage:latest
-RUN apt-get update && apt-get install -y wget tar make libpcre3 libpcre3-dev openssl libssl-dev openssl libssl-dev
+RUN apt-get update && apt-get install -y wget tar make libpcre3 libpcre3-dev openssl libssl-dev openssl libssl-dev supervisor
 WORKDIR /root
 RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php && \
 apt-get update && \
