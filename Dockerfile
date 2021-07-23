@@ -1,4 +1,5 @@
-FROM phusion/baseimage:latest
+FROM phusion/baseimage:focal-1.0.0alpha1-amd64
+CMD ["/sbin/my_init"]
 RUN apt-get update && apt-get install -y wget tar make libpcre3 libpcre3-dev openssl libssl-dev openssl libssl-dev supervisor
 WORKDIR /root
 RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php && \
