@@ -32,4 +32,8 @@ phpize7.2 && ./configure \
 --enable-mysqlnd && \
 make clean && make install && \
 echo "extension=swoole.so" >> /etc/php/7.2/cli/php.ini && \
-cd /root && rm -rf swoole-src-4.4.2
+cd /root && rm -rf swoole-src-4.4.2 &&
+php -r "readfile('https://getcomposer.org/installer');" > composer-setup.php && \
+php composer-setup.php && \
+php -r "unlink('composer-setup.php');" && \
+mv composer.phar /usr/local/bin/composer
